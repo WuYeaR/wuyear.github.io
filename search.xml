@@ -20,12 +20,73 @@
 <h3 id="zshrc配置"><a href="#zshrc配置" class="headerlink" title=".zshrc配置"></a>.zshrc配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=<span class="string">&quot;powerlevel10k/powerlevel10k&quot;</span></span><br><span class="line">plugins=(sudo git z.lua extract command-not-found autoupdate zsh-autosuggestions zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>配置</category>
-        <category>Linux</category>
+        <category>美化</category>
       </categories>
       <tags>
         <tag>美化</tag>
         <tag>zsh</tag>
         <tag>Linux配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>条款1: 视C++为一个联邦</title>
+    <url>/2023/02/27/EffectiveC-%E7%AC%94%E8%AE%B0-2023-02-27-%E6%9D%A1%E6%AC%BE1-%E8%A7%86C-%E4%B8%BA%E4%B8%80%E4%B8%AA%E8%81%94%E9%82%A6/</url>
+    <content><![CDATA[<h1 id="视C-为一个联邦"><a href="#视C-为一个联邦" class="headerlink" title="视C++为一个联邦"></a>视C++为一个联邦</h1><hr>
+<h2 id="1-C与C"><a href="#1-C与C" class="headerlink" title="1. C与C++"></a>1. C与C++</h2><ol>
+<li>C以C++为基础</li>
+<li>Object-Oriented C++</li>
+<li>templates</li>
+<li>STL</li>
+</ol>
+<h2 id="2-C-是一门多重泛型的语言"><a href="#2-C-是一门多重泛型的语言" class="headerlink" title="2. C++是一门多重泛型的语言"></a>2. C++是一门多重泛型的语言</h2><ol>
+<li>过程形式(procedural)</li>
+<li>面向对象形式(object-oriented)</li>
+<li>泛型形式(generic)</li>
+<li>元编程形式(metaprogramming)</li>
+<li>函数形式(functional)</li>
+</ol>
+<h2 id="C-是一门语言的联邦而不是一个单独的语言-他是四个次级语言组成的-联邦-每个次语言都有自己的规约"><a href="#C-是一门语言的联邦而不是一个单独的语言-他是四个次级语言组成的-联邦-每个次语言都有自己的规约" class="headerlink" title="C++是一门语言的联邦而不是一个单独的语言, 他是四个次级语言组成的___联邦___, 每个次语言都有自己的规约"></a>C++是一门语言的联邦而不是一个单独的语言, 他是四个次级语言组成的___联邦___, 每个次语言都有自己的规约</h2><p>比如在<code>内置类型C like</code>而言, pass-by-value通常更高效, 但是到了Object-Oriented, 由于构造和析构的存在, pass-by-reference-const往往更好, template C++更是如此, 因为在展开前, 你不知道所处理的对象的类型, <strong>但是</strong>, 到了STL迭代器和数组而言, pass-by-value再次适用<br>所以, 每个次语言都有自己的规约, 不要惊讶</p>
+]]></content>
+      <categories>
+        <category>Effective C++笔记</category>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>C++</tag>
+        <tag>Effective C++11</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>条款2: 替换#define</title>
+    <url>/2023/02/27/EffectiveC-%E7%AC%94%E8%AE%B0-2023-02-27-%E6%9D%A1%E6%AC%BE2-%E6%9B%BF%E6%8D%A2-define/</url>
+    <content><![CDATA[<h1 id="尽量以const-enum-inline替换-define"><a href="#尽量以const-enum-inline替换-define" class="headerlink" title="尽量以const, enum, inline替换#define"></a>尽量以const, enum, inline替换#define</h1><hr>
+<h2 id="为什么要替换-define"><a href="#为什么要替换-define" class="headerlink" title="为什么要替换#define"></a>为什么要替换#define</h2><p>假设有存在一个定义</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PI_M 3.1415</span></span><br></pre></td></tr></table></figure>
+
+<p><code>PI_M</code>在编译前就被预处理器移走了, 所以从未进入过<code>symbol table</code>, 如果在使用变量但是出现编译期错误信息时, 提到的是<code>3.1415</code>而不是<code>PI_M</code>, 同理在<code>symbol debugger</code>中也可能因为没有进入<code>symbol table</code>而为了追踪它浪费时间</p>
+<p><em><strong>解决方法</strong></em></p>
+<p>用常量代替宏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const double PI_M = 3.1415;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>注意:</strong></em> C++98中规定, 在<code>命名空间 namespace</code>中的const是隐式static的</p>
+<blockquote>
+<p><em>Translation unit:</em> A source file after the pre-processor (recursively) included all its include files.</p>
+<p><em>Static linkage:</em> A symbol is only available within its translation unit.</p>
+<p><em>External linkage:</em> A symbol is available from other translation units.</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">const</span> <span class="type">int</span> sci = <span class="number">0</span>; <span class="comment">// sci is explicitly static</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> ci = <span class="number">1</span>;         <span class="comment">// ci is implicitly static</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">const</span> <span class="type">int</span> eci = <span class="number">2</span>; <span class="comment">// eci is explicitly extern</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> ei = <span class="number">3</span>;        <span class="comment">// ei is explicitly extern</span></span><br><span class="line"><span class="type">int</span> i = <span class="number">4</span>;                <span class="comment">// i is implicitly extern</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> si = <span class="number">5</span>;        <span class="comment">// si is explicitly static</span></span><br></pre></td></tr></table></figure>
+
+<p>使用宏可能由于预处理器的替换是盲目的, 可能在object code中出现多份3.1415, 而const绝对不会</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
+      <categories>
+        <category>Effective C++笔记</category>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>C++</tag>
+        <tag>Effective C++</tag>
       </tags>
   </entry>
 </search>
