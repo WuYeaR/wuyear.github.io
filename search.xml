@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Linux 配置</title>
+    <url>/2023/02/26/linux%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<hr>
+<h3 id="安装zsh包"><a href="#安装zsh包" class="headerlink" title="安装zsh包"></a>安装zsh包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install zsh</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装Oh-My-Zsh框架"><a href="#安装Oh-My-Zsh框架" class="headerlink" title="安装Oh My Zsh框架"></a>安装Oh My Zsh框架</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h3><h4 id="Powerlevel10k"><a href="#Powerlevel10k" class="headerlink" title="Powerlevel10k"></a><em>Powerlevel10k</em></h4><pre><code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/romkatv/powerlevel10k.git <span class="variable">$&#123;ZSH_CUSTOM:-<span class="variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k</span><br><span class="line"><span class="built_in">exec</span> zsh</span><br><span class="line">p10k configure</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h4 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a><em>zsh-syntax-highlighting</em></h4><pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h4 id="zsh-autosuggestions"><a href="#zsh-autosuggestions" class="headerlink" title="zsh-autosuggestions"></a><em>zsh-autosuggestions</em></h4>   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+
+<h4 id="z-lua"><a href="#z-lua" class="headerlink" title="z.lua"></a><em>z.lua</em></h4>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/skywind3000/z.lua.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/z.lua</span><br></pre></td></tr></table></figure>
+
+<h4 id="autoupdate-zsh-plugin"><a href="#autoupdate-zsh-plugin" class="headerlink" title="autoupdate-zsh-plugin"></a><em>autoupdate-zsh-plugin</em></h4>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/TamCore/autoupdate-oh-my-zsh-plugins <span class="variable">$ZSH_CUSTOM</span>/plugins/autoupdate</span><br></pre></td></tr></table></figure>
+<h3 id="zshrc配置"><a href="#zshrc配置" class="headerlink" title=".zshrc配置"></a>.zshrc配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=<span class="string">&quot;powerlevel10k/powerlevel10k&quot;</span></span><br><span class="line">plugins=(sudo git z.lua extract command-not-found autoupdate zsh-autosuggestions zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>配置</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>美化</tag>
+        <tag>zsh</tag>
+        <tag>Linux配置</tag>
+      </tags>
+  </entry>
+</search>
