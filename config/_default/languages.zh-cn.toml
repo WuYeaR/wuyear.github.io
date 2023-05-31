@@ -1,0 +1,26 @@
+languageCode = "zh-cn"
+languageName = "Chinese"
+weight = 0
+
+title = "JJWu's Tech Blog"
+# copyright = "Copy, _right?_ :thinking_face:"
+
+[params]
+  isoCode = "zh-cn"
+	displayName = "中文"
+  rtl = false
+
+  dateFormat = "2006年1月2日"
+
+  # mainSections = ["section1", "section2"]
+  # description = "My awesome website"
+
+[author]
+  name = "JJ Wu"
+  # image = "img/author.jpg"
+  # headline = "I'm only human"
+  # bio = "A little bit about you"
+
+links = [
+	{ github = "https://github.com/WuYeaR" }
+]
